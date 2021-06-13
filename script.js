@@ -45,12 +45,12 @@ function writePassword() {
     return symbols [Math.floor(Math.random() * symbols.length)];
   }
 
- var getrandom= {
+  var getrandom= {
     lower: RandomLower,
     upper: RandomUpper,
     number: Randomnumber,
     character: Randomcharacter
-  };
+ };
 
   let generatePassword = "";
 
