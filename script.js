@@ -18,14 +18,14 @@ function writePassword() {
       var lowercaserequest = window.confirm("Should this password have Lowercase letters? OK= Yes Cancel=No");
     }
     if(lowercaserequest === true || lowercaserequest == false){
-      var CharacterRequest = window.confirm("Should this password have Special Characters? OK= Yes Cancel=No");
+      var characterRequest = window.confirm("Should this password have Special Characters? OK= Yes Cancel=No");
     }
-  };
+ 
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
-}
+
 
 // Add event listener to generate button
 function RandomLower() {
@@ -52,7 +52,27 @@ var getrandom = {
   character: Randomcharacter
 };
 
-var typescount = numberRequest + lowercaserequest + uppercaserequest + CharacterRequest
+var typescount = numberRequest + lowercaserequest + uppercaserequest + characterRequest;
+
+console.log (typescount)
+
+var generatedArr = [{ numberRequest }, { lowercaserequest}, {uppercaserequest}, {characterRequest}].filter(item => Object.values(item)[0]);
+
+if(typescount === 0) {
+  return window.alert("you must select at least one character type")
+};
+
+
+
+
+};
+
+
+var passwordText = document.querySelector("#password")
+
+passwordText.value = password;
+
+};
 
 
 generateBtn.addEventListener("click", writePassword);
