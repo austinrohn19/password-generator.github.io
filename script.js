@@ -27,44 +27,56 @@ function writePassword() {
 
 
 
-// Add event listener to generate button
-function RandomLower() {
-  return String.fromCharCode(math.floor(math.random() * 26) + 97 );
-}
+  // Add event listener to generate button
+  function RandomLower() {
+    return String.fromCharCode(math.floor(math.random() * 26) + 97 );
+  }
 
-function RandomUpper() {
-  return String.fromCharCode(math.floor(math.random() * 26) + 65 );
-}
+  function RandomUpper() {
+    return String.fromCharCode(math.floor(math.random() * 26) + 65 );
+  }
 
-function Randomnumber() {
-  return String.fromCharCode(math.floor(math.random() * 10) + 48 );
-}
+  function Randomnumber() {
+    return String.fromCharCode(math.floor(math.random() * 10) + 48 );
+  }
 
-function Randomcharacter() {
-  const symbols = "!@#$%^&*(){}[]=<>/,.";
-  return symbols [Math.floor(Math.random() * symbols.length)];
-}
+  function Randomcharacter() {
+    const symbols = "!@#$%^&*(){}[]=<>/,.";
+    return symbols [Math.floor(Math.random() * symbols.length)];
+  }
 
-var getrandom = {
-  lower: RandomLower,
-  upper: RandomUpper,
-  number: Randomnumber,
-  character: Randomcharacter
-};
+ var getrandom= {
+    lower: RandomLower,
+    upper: RandomUpper,
+    number: Randomnumber,
+    character: Randomcharacter
+  };
 
-var typescount = numberRequest + lowercaserequest + uppercaserequest + characterRequest;
+  let generatePassword = "";
 
-console.log (typescount)
+  var typescount = numberRequest + lowercaserequest + uppercaserequest + characterRequest;
 
-var generatedArr = [{ numberRequest }, { lowercaserequest}, {uppercaserequest}, {characterRequest}].filter(item => Object.values(item)[0]);
+  console.log (typescount)
 
-if(typescount === 0) {
-  return window.alert("you must select at least one character type")
-};
+  var generatedArr = [{ numberRequest }, { lowercaserequest}, {uppercaserequest}, {characterRequest}].filter(item => Object.values(item)[0]);
 
+  if(typescount === 0) {
+    return window.alert("you must select at least one character type")
+  };
 
+  for ( let i = 0; i < lengthPrompt; i += typescount) {
+    generatedArr.forEach(type => {
+      var selectedtypes = Object.keys(type)[0];
 
+      console.log("selectedtypes: ", selectedtypes);
 
+      generatePassword += getrandom[selectedtypes]();
+    });
+  }
+
+  var finalPassword = generatePassword.slice(0, length);
+
+  return finalPassword;
 };
 
 
