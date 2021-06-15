@@ -27,15 +27,15 @@ function writePassword() {
 
   // Add event listener to generate button
   function RandomLower() {
-    return String.fromCharCode(math.floor(math.random() * 26) + 97 );
+    return String.fromCharCode(Math.floor(Math.random() * 26) + 97 );
   }
   
   function RandomUpper() {
-    return String.fromCharCode(math.floor(math.random() * 26) + 65 );
+    return String.fromCharCode(Math.floor(Math.random() * 26) + 65 );
   }
   
   function Randomnumber() {
-    return String.fromCharCode(math.floor(math.random() * 10) + 48 );
+    return String.fromCharCode(Math.floor(Math.random() * 10) + 48 );
   }
   
   function Randomcharacter() {
@@ -44,10 +44,10 @@ function writePassword() {
   }
  
   var getrandom= {
-    lower: RandomLower,
-    upper: RandomUpper,
-    number: Randomnumber,
-    character: Randomcharacter
+    lowercaserequest: RandomLower,
+    uppercaserequest: RandomUpper,
+    numberRequest: Randomnumber,
+    characterRequest: Randomcharacter
  };
 
   let generatePassword = "";
@@ -68,14 +68,12 @@ function writePassword() {
 
       console.log("selectedtypes: ", selectedtypes);
 
-      generatePassword += getrandom[selectedtypes];
+      generatePassword += getrandom[selectedtypes]();
     });
   } 
   console.log(generatePassword);
-
-  var finalPassword = generatePassword.slice(0, length);
-
-  return finalPassword;
+  
+  return generatePassword;
 };
 
 var passwordText = document.querySelector ("#password")
